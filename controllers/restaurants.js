@@ -54,6 +54,7 @@ function edit(req, res) {
 }
 
 function update(req, res) {
+  req.body.thumbsUp = !!req.body.thumbsUp
   Restaurant.findByIdAndUpdate(req.params.id, req.body, {new: true})
   .then(restaurant => {
     res.redirect(`/restaurants/${restaurant._id}`)
