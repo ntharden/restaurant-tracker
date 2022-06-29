@@ -8,10 +8,16 @@ function index(req, res) {
       title: "Restaurants"
     })
   })
+  .catch(err => {
+    res.redirect('/')
+  })
 }
 
 function newRestaurant(req, res) {
   res.render('restaurants/new')
+  .catch(err => {
+    res.redirect('/')
+  })
 }
 
 function create(req, res) {
@@ -21,10 +27,48 @@ function create(req, res) {
   .then(restaurant => {
     res.redirect('/')
   })
+  .catch(err => {
+    res.redirect('/')
+  })
+}
+
+function show(req, res) {
+  Restaurant.findById(req.params.id)
+  .then(restaurant => {
+    res.render('restaurants/show', {
+      restaurant
+    })
+  })
+  .catch(err => {
+    res.redirect('/')
+  })
+}
+
+function edit(req, res) {
+  Restaurant.findById(req.params.id)
+  .then(restaurant => {
+    res.render('restaurants/edit', {
+      restaurant
+    })
+  })
+}
+
+function update(req, res) {
+  Restaurant.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  .then(restaurant => {
+    res.redirect(`/restaurants/${restaurant._id}`)
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/")
+  })
 }
 
 export {
   index,
   newRestaurant as new,
-  create
+  create,
+  show,
+  edit,
+  update
 }

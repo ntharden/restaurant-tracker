@@ -4,14 +4,16 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>New Restaurant</title>
+  <title>Edit</title>
 </head>
 <body>
-  <h2>New Restaurant</h2>
-  <form action="/restaurants" method="POST">
+  <h1><%= restaurant.name %></h1>
+  <form action="/restaurants/<%= restaurant._id %>?_method=PUT" method="POST">  
     <input name="name" type="text" required="required">
     <input name="thumbsUp" type="checkbox">
-    <button type="submit">Add Restaurant</button>
+    <button type="submit">Edit Complete</button>
   </form>
 </body>
 </html>
+
+
