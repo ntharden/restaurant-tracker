@@ -19,7 +19,7 @@ function create(req, res) {
   console.log(req.body.thumbsUp)
   Restaurant.create(req.body)
   .then(restaurant => {
-    res.redirect('/restaurants')
+    res.redirect('/')
   })
 }
 
