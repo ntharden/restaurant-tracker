@@ -16,6 +16,7 @@ function newRestaurant(req, res) {
 
 function create(req, res) {
   req.body.thumbsUp = !!req.body.thumbsUp
+  console.log(req.body.thumbsUp)
   Restaurant.create(req.body)
   .then(restaurant => {
     res.redirect('/restaurants')
