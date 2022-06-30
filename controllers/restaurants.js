@@ -65,11 +65,23 @@ function update(req, res) {
   })
 }
 
+function deleteRestaurant(req, res) {
+  Restaurant.findByIdAndDelete(req.params.id)
+  .then(() => {
+    res.redirect("/restaurants")
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/")
+  })
+}
+
 export {
   index,
   newRestaurant as new,
   create,
   show,
   edit,
-  update
+  update,
+  deleteRestaurant as delete
 }

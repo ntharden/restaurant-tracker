@@ -9,6 +9,7 @@ router.get('/:id', restaurantsCtrl.show)
 router.get('/:id/edit', restaurantsCtrl.edit)
 router.post('/', restaurantsCtrl.create)
 router.put('/:id', restaurantsCtrl.update)
+router.delete('/:id', restaurantsCtrl.delete)
 
 export {
   router

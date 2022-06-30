@@ -12,5 +12,8 @@
     <button>Edit Restaurant Info</button>
   </a>
   <h3><%= restaurant.name %> has <%= restaurant.thumbsUp ? 'a thumbs up!' : 'a thumbs down'%></h3>
+  <form action="/restaurants/<%= restaurant._id %>?_method=DELETE" method="POST">
+    <button>Delete</button>
+  </form>
 </body>
 </html>

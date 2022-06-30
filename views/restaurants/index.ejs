@@ -9,11 +9,15 @@
 <body>
   <main>
     <h2><%= title %></h2>
-    <a href="/restaurants/new">Add a restaurant</a>
+    <a href="/restaurants/new">Add a restaurant</a> <br>
+    <ul>
       <% restaurants.forEach(restaurant => { %>
-       <%= restaurant.name %> <%= restaurant.thumbsUp ? '👍' : '👎' %>
-       <a href="/restaurants/<%= restaurant._id %>">About Restaurant</a>
-      <% }) %>
+      <li>
+         <%= restaurant.name %> <%= restaurant.thumbsUp ? '👍' : '👎' %>
+         <a href="/restaurants/<%= restaurant._id %>">About Restaurant</a>
+        <% }) %>
+      </li>
+    </ul>
     </main>
 </body>
 </html>
