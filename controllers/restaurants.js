@@ -68,7 +68,7 @@ function update(req, res) {
 function deleteRestaurant(req, res) {
   Restaurant.findByIdAndDelete(req.params.id)
   .then(() => {
-    res.redirect("/")
+    res.redirect("/restaurants")
   })
   .catch(err => {
     console.log(err)
