@@ -5,7 +5,8 @@ function index(req, res) {
   .then(restaurants => {
     res.render("restaurants/index", {
       restaurants,
-      title: "Restaurants"
+      title: "Restaurants",
+      user: req.user,
     })
   })
   .catch(err => {
@@ -25,7 +26,7 @@ function create(req, res) {
   console.log(req.body.thumbsUp)
   Restaurant.create(req.body)
   .then(restaurant => {
-    res.redirect('/')
+    res.redirect('/restaurants')
   })
   .catch(err => {
     res.redirect('/')

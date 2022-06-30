@@ -1,9 +1,3 @@
-  <% if (!user) { %>
-    <link rel="stylesheet" href="/stylesheets/siwg.css">
-  <% } %>
-</head>
-<body>
-  <nav>
     <% if (!user) { %>
       <link rel="stylesheet" href="/stylesheets/siwg.css">
     <% } %>
@@ -20,7 +14,7 @@
         </a>
       <% } %>
       <a 
-      href="/restaurants/index" <%- title === 'Restaurants' ? 'class="active"' : '' %>
+      href="/restaurants" <%- title === 'Restaurants' ? 'class="active"' : '' %>
     >
       Restaurants
     </a>

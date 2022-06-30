@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= title %></title>
-</head>
-<body>
+<%- include('./partials/html-head') %>
+<%- include('./partials/nav') %>
+
+
   <main>
     <h2><%= title %></h2>
     <a href="/restaurants/new">Add a restaurant</a> <br>
@@ -14,10 +9,10 @@
       <% restaurants.forEach(restaurant => { %>
       <li>
          <%= restaurant.name %> <%= restaurant.thumbsUp ? '👍' : '👎' %>
-         <a href="/restaurants/<%= restaurant._id %>">About Restaurant</a>
+         <a href="/restaurants/<%= restaurant._id %>">About</a> <%= restaurant.name %>
         <% }) %>
       </li>
     </ul>
     </main>
-</body>
-</html>
+
+<%- include('./partials/footer') %>
