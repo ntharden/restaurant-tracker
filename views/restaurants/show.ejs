@@ -6,11 +6,12 @@
   <a href="/restaurants/<%= restaurant._id %>/edit">
     <button>Edit Restaurant Info</button>
   </a>
-  <form 
-    id="add-review-form"
-    action="/restaurants/<%= restaurant._id %>/reviews"
-    method="POST"
-  >
+  <% if (user) { %>
+    <form 
+      id="add-review-form"
+      action="/restaurants/<%= restaurant._id %>/reviews"
+      method="POST"
+    >
     <label for="content-textarea">New Review:</label>
     <textarea name="content" id="content-textarea"></textarea>
     <label for="thumbsUp-checkbox">Thumbs Up?</label>
@@ -20,27 +21,40 @@
   <form action="/restaurants/<%= restaurant._id %>?_method=DELETE" method="POST">
     <button>Delete</button>
   </form>
-  <% if (restaurant.reviews.length) { %>
-    <table>
-      <thead>
+<% } %>
+<% if (restaurant.reviews.length) { %>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Review</th>
+        <th>Recommend?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% restaurant.reviews.forEach(function(review) { %>
         <tr>
-          <th>Date</th>
-          <th>Review</th>
-          <th>Recommend?</th>
+          <td><%= review.createdAt.toLocaleDateString() %></td>
+          <td><%= review.content %></td>
+          <% review.thumbsUp = !!review.thumbsUp %> 
+          <td><%= review.thumbsUp ? '👍' : '👎'%></td>
+          <td>
+            <% if (review.author?.profile._id.equals(user?.profile._id)) { %>
+              <form action="/restaurants/<%= restaurant._id %>/edit" method="GET">
+                <button class="btn" type="submit">Edit this review</button>
+              </form>
+              <form action="/restaurants/<%= restaurant._id %>?_method=DELETE" method="POST">
+                <button class="btn" type="submit">Delete this review</button>
+              </form>
+            <% } %>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-        <% restaurant.reviews.forEach(function(review) { %>
-          <tr>
-            <td><%= review.createdAt.toLocaleDateString() %></td>
-            <td><%= review.content %></td>
-            <% review.thumbsUp = !!review.thumbsUp %> 
-            <td><%= review.thumbsUp ? '👍' : '👎'%></td>
-          </tr>
-        <% }) %>
-      </tbody>
-    </table>
-  <% } else { %>
-    <h3>No Reviews Yet</h3>
-  <% } %>
-  <%- include('../partials/footer') %>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } else { %>
+        <h3>No Reviews Yet</h3>
+      <% } %>
+        <%- include('../partials/footer') %>
+        
+        

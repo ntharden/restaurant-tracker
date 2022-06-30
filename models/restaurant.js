@@ -5,13 +5,14 @@ const Schema = mongoose.Schema
 const reviewSchema = new Schema({
   content: String,
   thumbsUp: Boolean,
+  author: {type: Schema.Types.ObjectId, ref: "Profile"}
 }, {
   timestamps: true,
 })
 
 const restaurantSchema = new Schema({
   name: String,
-  reviews: [reviewSchema]
+  reviews: [reviewSchema],
 }, {
   timestamps: true,
 })
