@@ -5,7 +5,8 @@ const Schema = mongoose.Schema
 const reviewSchema = new Schema({
   content: String,
   thumbsUp: Boolean,
-  author: {type: Schema.Types.ObjectId, ref: "Profile"}
+  author: String,
+  objectId: {type: Schema.Types.ObjectId, ref: "Profile"}
 }, {
   timestamps: true,
 })

@@ -1,7 +1,6 @@
 import { Restaurant } from "../models/restaurant.js"
 
 function index(req, res) {
-  console.log(req.user)
   Restaurant.find({})
   .then(restaurants => {
     res.render("restaurants/index", {
@@ -36,12 +35,13 @@ function create(req, res) {
 
 function show(req, res) {
   Restaurant.findById(req.params.id)
-  .populate("reviews.author")
   .then(restaurant => {
-    console.log('This is the restaurant------', restaurant)
+    const userProfileId = req.user.id
+    console.log('this is the restaurant------', restaurant)
     res.render('restaurants/show', {
       restaurant,
-      title: "About"
+      title: "About",
+      userProfileId
     })
   })
   .catch(err => {
@@ -87,10 +87,16 @@ function deleteRestaurant(req, res) {
 }
 
 function createReview(req, res) {
-  Restaurant.findById(req.params.id, req.user.profile_id)
+  Restaurant.findById(req.params.id)
   .then(restaurant => {
+    console.log('after .then--------', restaurant)
     req.body.thumbsUp = !!req.body.thumbsUp
-    restaurant.reviews.push(req.body)
+    const review = {
+      content: req.body.content,
+      thumbsUp: req.body.thumbsUp,
+      author: req.user.id
+    }
+    restaurant.reviews.push(review)
     restaurant.save(() => {
       res.redirect(`/restaurants/${restaurant._id}`)
     })

@@ -39,7 +39,7 @@
           <% review.thumbsUp = !!review.thumbsUp %> 
           <td><%= review.thumbsUp ? '👍' : '👎'%></td>
           <td>
-            <% if (review.author?.profile._id.equals(user?.profile._id)) { %>
+            <% if (review.author === userProfileId) { %>
               <form action="/restaurants/<%= restaurant._id %>/edit" method="GET">
                 <button class="btn" type="submit">Edit this review</button>
               </form>
