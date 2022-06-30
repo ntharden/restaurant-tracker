@@ -18,9 +18,6 @@ function newRestaurant(req, res) {
   res.render('restaurants/new', {
     title: "Add Restaurant",
   })
-  .catch(err => {
-    res.redirect('/')
-  })
 }
 
 function create(req, res) {
@@ -87,6 +84,17 @@ function deleteRestaurant(req, res) {
   })
 }
 
+function createReview(req, res) {
+  Restaurant.findById(req.params.id)
+  .then(restaurant => {
+    req.body.thumbsUp = !!req.body.thumbsUp
+    restaurant.reviews.push(req.body)
+    restaurant.save(() => {
+      res.redirect(`/restaurants/${restaurant._id}`)
+    })
+  })
+}
+
 export {
   index,
   newRestaurant as new,
@@ -94,5 +102,6 @@ export {
   show,
   edit,
   update,
-  deleteRestaurant as delete
+  deleteRestaurant as delete,
+  createReview
 }

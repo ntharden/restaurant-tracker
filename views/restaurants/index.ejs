@@ -7,8 +7,8 @@
     <ul>
       <% restaurants.forEach(restaurant => { %>
       <li>
-         <%= restaurant.name %> <%= restaurant.thumbsUp ? '👍' : '👎' %>
-         <a href="/restaurants/<%= restaurant._id %>">About</a> <%= restaurant.name %>
+         <%= restaurant.name %>
+         <a href="/restaurants/<%= restaurant._id %>">About</a>
         <% }) %>
       </li>
     </ul>

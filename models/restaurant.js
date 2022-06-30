@@ -2,9 +2,16 @@ import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
 
+const reviewSchema = new Schema({
+  content: String,
+  thumbsUp: Boolean,
+}, {
+  timestamps: true,
+})
+
 const restaurantSchema = new Schema({
   name: String,
-  thumbsUp: Boolean
+  reviews: [reviewSchema]
 }, {
   timestamps: true,
 })

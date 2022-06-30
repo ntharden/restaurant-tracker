@@ -90,27 +90,27 @@
                   <% }) %>
                 </ul>
                 <% // Add dynamic UI form below this line %>
-                <% if (profile._id.equals(user?.studentProfile._id)) { %>
-                  <div class="card-footer">
-                    <form
-                      action="/profiles/facts"
-                      method="POST"
-                      class="input-group"
-                    >
-                      <input
-                        type="text"
-                        name="text"
-                        class="form-control form-control-dark"
-                        placeholder="Add a fact..."
-                        autocomplete="off"
-                        required
-                      />
-                      <button type="submit" class="btn btn-primary">
-                        Add Fact
-                      </button>
-                    </form>
-                  </div>
-                <% } %>
+                <!-- ejsif %> -->
+                  <!-- <div class="card-footer"> -->
+                    <!-- <form -->
+                      <!-- action="/profiles/facts" -->
+                      <!-- method="POST" -->
+                      <!-- class="input-group" -->
+                    <!-- > -->
+                      <!-- <input -->
+                        <!-- type="text" -->
+                        <!-- name="text" -->
+                        <!-- class="form-control form-control-dark" -->
+                        <!-- placeholder="Add a fact..." -->
+                        <!-- autocomplete="off" -->
+                        <!-- required -->
+                      <!-- /> -->
+                      <!-- <button type="submit" class="btn btn-primary"> -->
+                        <!-- Add Fact -->
+                      <!-- </button> -->
+                    <!-- </form> -->
+                  <!-- </div> -->
+                <!-- end ejs -->
               </div>
             </div>
           </div>
