@@ -1,4 +1,5 @@
 # Restaurant Tracker
+
 This app is designed for users to track different restaurants that they have eaten at and allows them to add reviews and a 'thumbs up' or 'thumbs down'.
 ---
 ## Getting Started 
