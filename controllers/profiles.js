@@ -6,8 +6,8 @@ function index(req, res) {
   // Make the query object to use with Profile.find based on
   // whether the user has submitted the search form or not
   let modelQuery = req.query.name
-    ? { name: new RegExp(req.query.name, 'i') }
-    : {}
+  ? { name: new RegExp(req.query.name, 'i') }
+  : {}
   // Sorting by name
   Profile.find(modelQuery)
   .sort("name")

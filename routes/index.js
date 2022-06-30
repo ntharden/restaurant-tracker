@@ -3,7 +3,9 @@ import { Router } from 'express'
 const router = Router()
 
 router.get('/', function (req, res) {
-  res.render('index', { title: 'Home Page', user: req.user ? req.user : null })
+  console.log('Hitting /restuarants')
+  res.redirect('/restaurants')
+  // use other from MEN template if this^ doesn't work
 })
 
 export {
