@@ -3,23 +3,25 @@
 
 <body>
   <h1><%= restaurant.name %></h1>
-  <a href="/restaurants/<%= restaurant._id %>/edit">
-    <button>Edit Restaurant Info</button>
-  </a>
+  <% if (restaurant.owner === userProfileId) { %>
+    <a href="/restaurants/<%= restaurant._id %>/edit">
+      <button>Edit Restaurant Info</button>
+    </a>
+    <form action="/restaurants/<%= restaurant._id %>?_method=DELETE" method="POST">
+      <button>Delete Restaurant</button>
+  <% } %>
+  </form>
   <% if (user) { %>
-    <form 
-      id="add-review-form"
-      action="/restaurants/<%= restaurant._id %>/reviews"
-      method="POST"
-    >
+  <form 
+    id="add-review-form"
+    action="/restaurants/<%= restaurant._id %>/reviews"
+    method="POST"
+  >
     <label for="content-textarea">New Review:</label>
     <textarea name="content" id="content-textarea"></textarea>
     <label for="thumbsUp-checkbox">Thumbs Up?</label>
     <input name="thumbsUp" type="checkbox" id="thumbsUp-checkbox">
     <button type="submit">Add Review</button>
-  </form>
-  <form action="/restaurants/<%= restaurant._id %>?_method=DELETE" method="POST">
-    <button>Delete Restaurant</button>
   </form>
 <% } %>
 <% if (restaurant.reviews.length) { %>
@@ -38,16 +40,6 @@
           <td><%= review.content %></td>
           <% review.thumbsUp = !!review.thumbsUp %> 
           <td><%= review.thumbsUp ? '👍' : '👎'%></td>
-          <td>
-            <% if (review.author === userProfileId) { %>
-              <form action="/restaurants/<%= restaurant._id %>/edit" method="GET">
-                <button class="btn" type="submit">Edit this review</button>
-              </form>
-              <form action="/restaurants/<%= restaurant._id %>?_method=DELETE" method="POST">
-                <button class="btn" type="submit">Delete this review</button>
-              </form>
-            <% } %>
-          </td>
         </tr>
           <% }) %>
         </tbody>

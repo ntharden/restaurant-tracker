@@ -14,6 +14,7 @@ const reviewSchema = new Schema({
 const restaurantSchema = new Schema({
   name: String,
   reviews: [reviewSchema],
+  owner: String
 }, {
   timestamps: true,
 })

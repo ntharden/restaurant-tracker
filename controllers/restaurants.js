@@ -17,11 +17,14 @@ function newRestaurant(req, res) {
   res.render('restaurants/new', {
     title: "Add Restaurant",
   })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/")
+  })
 }
 
 function create(req, res) {
-  req.body.owner = req.user.profile_id
-  req.body.thumbsUp = !!req.body.thumbsUp
+  req.body.owner = req.user.id
   Restaurant.create(req.body)
   .then(restaurant => {
     res.redirect('/restaurants', {
@@ -37,7 +40,6 @@ function show(req, res) {
   Restaurant.findById(req.params.id)
   .then(restaurant => {
     const userProfileId = req.user.id
-    console.log('this is the restaurant------', restaurant)
     res.render('restaurants/show', {
       restaurant,
       title: "About",
@@ -56,6 +58,10 @@ function edit(req, res) {
       title: "Edit Restaurant",
       restaurant
     })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/")
   })
 }
 
@@ -89,7 +95,6 @@ function deleteRestaurant(req, res) {
 function createReview(req, res) {
   Restaurant.findById(req.params.id)
   .then(restaurant => {
-    console.log('after .then--------', restaurant)
     req.body.thumbsUp = !!req.body.thumbsUp
     const review = {
       content: req.body.content,
@@ -101,6 +106,21 @@ function createReview(req, res) {
       res.redirect(`/restaurants/${restaurant._id}`)
     })
   })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/")
+  })
+}
+
+function updateReview(req, res) {
+  Restaurant.findById(req.params.id)
+  .then(restaurant => {
+    res.render()
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/")
+  })
 }
 
 export {
@@ -111,5 +131,6 @@ export {
   edit,
   update,
   deleteRestaurant as delete,
-  createReview
+  createReview,
+  updateReview
 }

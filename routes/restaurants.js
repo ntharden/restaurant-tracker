@@ -10,6 +10,7 @@ router.get('/:id', restaurantsCtrl.show)
 router.get('/:id/edit', isLoggedIn, restaurantsCtrl.edit)
 router.post('/', isLoggedIn, restaurantsCtrl.create)
 router.post('/:id/reviews', restaurantsCtrl.createReview)
+router.put('/:id/reviews/:id', restaurantsCtrl.updateReview)
 router.put('/:id', restaurantsCtrl.update)
 router.delete('/:id', restaurantsCtrl.delete)
 

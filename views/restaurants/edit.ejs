@@ -5,7 +5,6 @@
   <h1><%= restaurant.name %></h1>
   <form action="/restaurants/<%= restaurant._id %>?_method=PUT" method="POST">  
     <input name="name" type="text" required="required">
-    <input name="thumbsUp" type="checkbox">
     <button type="submit">Edit Complete</button>
   </form>
   
