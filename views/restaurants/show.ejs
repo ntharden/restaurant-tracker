@@ -26,7 +26,7 @@
 <% } %>
 <% if (restaurant.reviews.length) { %>
   <table>
-    <thead>
+    <thead class="list-group">
       <tr>
         <th>Date</th>
         <th>Review</th>
@@ -35,7 +35,7 @@
     </thead>
     <tbody>
       <% restaurant.reviews.forEach(function(review) { %>
-        <tr>
+        <tr class="list-group-item">
           <td><%= review.createdAt.toLocaleDateString() %></td>
           <td><%= review.content %></td>
           <% review.thumbsUp = !!review.thumbsUp %> 
