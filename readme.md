@@ -8,7 +8,7 @@
 - Click here to visit deployed app: https://restaurant-tracker-ga.herokuapp.com/
 
 ## Screenshot(s)
-<!-- Screenshot of landing page and any other of interest -->
+![screenshot of app](public/images/rest-tracker.png)
 
 ## Technologies Used
 
