@@ -2,16 +2,19 @@
 <%- include('../partials/nav') %>
 
   <main>
-    <h2><%= title %></h2>
-    <a href="/restaurants/new">Add a restaurant</a> <br>
-    <ul>
+    <h1><%= title %></h1>
+
       <% restaurants.forEach(restaurant => { %>
-      <li>
-         <%= restaurant.name %>
-         <a href="/restaurants/<%= restaurant._id %>">About</a>
-        <% }) %>
-      </li>
-    </ul>
+        <div class="card" style="width: 18rem;">
+          <img src="./assets/images/restaurant.png" class="card-img-top" alt="Placeholder photo">
+          <div class="card-body">
+            <h5 class="card-title"><%= restaurant.name %></h5>
+            <p class="card-text">Read reviews by clicking below</p>
+            <a href="/restaurants/<%= restaurant._id %>" class="btn btn-primary">About</a>
+          </div>
+        </div>
+      <% }) %>
+
     </main>
 
 <%- include('../partials/footer') %>
