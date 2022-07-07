@@ -37,14 +37,12 @@ function create(req, res) {
 }
 
 function show(req, res) {
-  const profileId = req.user.profile._id
   Restaurant.findById(req.params.id)
-  // .populate('owner')
+  .populate('owner')
   .then(restaurant => {
     res.render('restaurants/show', {
       restaurant,
       title: "About",
-      profileId
     })
   })
   .catch(err => {
