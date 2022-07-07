@@ -1,7 +1,6 @@
 // This is from https://github.com/SEI-Remote/sei-students/blob/main/routes/profiles.js
 
 import { Router } from 'express'
-import * as profilesCtrl from '../controllers/profiles.js'
 
 const router = Router()
 

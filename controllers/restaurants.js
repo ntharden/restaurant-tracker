@@ -98,23 +98,12 @@ function createReview(req, res) {
     const review = {
       content: req.body.content,
       thumbsUp: req.body.thumbsUp,
-      author: req.user.id
+      author: req.user.profile._id
     }
     restaurant.reviews.push(review)
     restaurant.save(() => {
       res.redirect(`/restaurants/${restaurant._id}`)
     })
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect("/")
-  })
-}
-
-function updateReview(req, res) {
-  Restaurant.findById(req.params.id)
-  .then(restaurant => {
-    res.render()
   })
   .catch(err => {
     console.log(err)
@@ -131,5 +120,4 @@ export {
   update,
   deleteRestaurant as delete,
   createReview,
-  updateReview
 }
