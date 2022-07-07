@@ -24,7 +24,7 @@ function newRestaurant(req, res) {
 }
 
 function create(req, res) {
-  req.body.owner = req.user.id
+  req.body.owner = req.profile.id
   Restaurant.create(req.body)
   .then(restaurant => {
     res.redirect('/restaurants', {

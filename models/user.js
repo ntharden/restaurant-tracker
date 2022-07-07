@@ -1,8 +1,7 @@
 import mongoose from 'mongoose'
 
 const userSchema = new mongoose.Schema({
-  email: String,
-  googleId: String,
+  googleId: String, //will use for personalized displays - stretch
   profile: { type: mongoose.Schema.Types.ObjectId, ref: 'Profile' },
 }, {
   timestamps: true,

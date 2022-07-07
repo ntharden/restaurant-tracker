@@ -10,8 +10,7 @@ const factSchema = new Schema({
 
 const profileSchema = new Schema({
   name: String,
-  avatar: String,
-  facts: [factSchema],
+  _id: Schema.Types.ObjectId
 }, {
   timestamps: true
 })
