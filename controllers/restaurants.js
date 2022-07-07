@@ -25,6 +25,7 @@ function newRestaurant(req, res) {
 }
 
 function create(req, res) {
+  
   Restaurant.create(req.body)
   .then(restaurant => {
     res.redirect('/restaurants', {
