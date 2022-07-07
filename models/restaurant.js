@@ -5,8 +5,7 @@ const Schema = mongoose.Schema
 const reviewSchema = new Schema({
   content: String,
   thumbsUp: Boolean,
-  author: String,
-  objectId: {type: Schema.Types.ObjectId, ref: "Profile"}
+  author: {type: Schema.Types.ObjectId, ref: "Profile"}
 }, {
   timestamps: true,
 })
@@ -14,7 +13,7 @@ const reviewSchema = new Schema({
 const restaurantSchema = new Schema({
   name: String,
   reviews: [reviewSchema],
-  owner: String
+  owner: {type: Schema.Types.ObjectId, ref: "Profile"}
 }, {
   timestamps: true,
 })
