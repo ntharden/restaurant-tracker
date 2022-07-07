@@ -14,7 +14,6 @@ router.get(
     failureRedirect: '/auth/google',
     failureMessage: true
   }), (req, res) => {
-    console.log('Hitting oauth!!!!')
     res.redirect('/restaurants')
   }
 )
