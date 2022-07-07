@@ -3,7 +3,8 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const profileSchema = new Schema({
-  _id: Schema.Types.ObjectId
+  name: String,
+  avatar: String,
 }, {
   timestamps: true
 })
