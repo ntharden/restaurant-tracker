@@ -1,4 +1,3 @@
-import { Profile } from "../models/profile.js"
 import { Restaurant } from "../models/restaurant.js"
 
 function index(req, res) {
@@ -25,7 +24,7 @@ function newRestaurant(req, res) {
 }
 
 function create(req, res) {
-  
+  req.body.owner = req.user.profile._id
   Restaurant.create(req.body)
   .then(restaurant => {
     res.redirect('/restaurants', {
@@ -38,12 +37,14 @@ function create(req, res) {
 }
 
 function show(req, res) {
+  const profileId = req.user.profile._id
   Restaurant.findById(req.params.id)
+  // .populate('owner')
   .then(restaurant => {
     res.render('restaurants/show', {
       restaurant,
       title: "About",
-      owner: restaurant.owner,
+      profileId
     })
   })
   .catch(err => {
