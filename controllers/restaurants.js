@@ -27,9 +27,7 @@ function create(req, res) {
   req.body.owner = req.user.profile._id
   Restaurant.create(req.body)
   .then(restaurant => {
-    res.redirect('/restaurants', {
-      title: "Restaurants",
-    })
+    res.redirect('/restaurants')
   })
   .catch(err => {
     res.redirect('/')
@@ -68,9 +66,7 @@ function update(req, res) {
   req.body.thumbsUp = !!req.body.thumbsUp
   Restaurant.findByIdAndUpdate(req.params.id, req.body, {new: true})
   .then(restaurant => {
-    res.redirect(`/restaurants/${restaurant._id}`, {
-      title: `/restaurants/${restaurant._id}`,
-    })
+    res.redirect(`/restaurants/${restaurant._id}`)
   })
   .catch(err => {
     console.log(err)
@@ -81,9 +77,7 @@ function update(req, res) {
 function deleteRestaurant(req, res) {
   Restaurant.findByIdAndDelete(req.params.id)
   .then(() => {
-    res.redirect("/restaurants", {
-      title: "Restaurants",
-    })
+    res.redirect("/restaurants")
   })
   .catch(err => {
     console.log(err)
